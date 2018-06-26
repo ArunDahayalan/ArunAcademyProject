@@ -1,0 +1,119 @@
+﻿@section TitleSection
+{
+     ATC Educational Institution || Galery
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="~/Content/galery.css" rel="stylesheet" />
+    <link href="~/Content/galery/animate.css" rel="stylesheet" />
+    <link href="~/Content/galery/icomoon.css" rel="stylesheet" />
+    <link href="~/Content/galery/magnific-popup.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+@section MainSection
+{
+    @{
+        Html.RenderPartial("~/Views/Common/_Menu.cshtml");
+    }
+    <div id="fh5co-main">
+            <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-4">
+                            <ul class="Navigation">
+                                <li><div class="Photos">PHOTOS</div></li>
+                                <li><div class="Videos">VIDEOS</div></li>
+                                <li><div class="Audios">AUDIOS</div></li>
+                            </ul>
+                    </div>
+
+                    <div id="fh5co-board" class="col-lg-10 col-md-10 col-sm-8" data-columns>
+                        <div id="photos-section">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="item">
+                                            <div class="animate-box">
+                                                <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="item">
+                                            <div class="animate-box">
+                                                <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="item">
+                                        <div class="animate-box">
+                                            <a href="./images/img_avatar2.png" class="image-popup fh5co-board-img"><img src="./images/img_avatar2.png" alt="Free HTML5 Bootstrap template"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                     </div>
+                 </div>
+         </div>
+    </div>
+    @{
+        Html.RenderPartial("~/Views/Common/_Footer.cshtml");
+    }
+}
+
+@section ScriptsSection
+{
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/owl.carousel.min.js"></script>
+    <script src="~/scripts/custom.js"></script>
+    <script src="~/scripts/galery/jquery.magnific-popup.min.js"></script>
+    <script src="~/scripts/galery/jquery.waypoints.min.js"></script>
+    <script src="~/scripts/galery/main.js"></script>
+}

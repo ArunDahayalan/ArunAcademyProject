@@ -1,0 +1,87 @@
+﻿
+
+@section TitleSection
+{
+     ATC Educational Institution || Test Result
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <style>
+        .printlabel
+        {
+            text-align:center;
+            font-weight:bold;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+@section MainSection
+{
+    @{
+        Html.RenderPartial("~/Views/Common/_Menu.cshtml");
+    }
+    <div id="testResult">
+        <div class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h2>
+                    TEST RESULT
+                </h2>
+                @if (ViewBag.Result != null)
+                {
+                    <div class="successTest">
+                        <p class="totalquestions">Hi, Your Score Out Of 100 Questions</p>
+                        <p class="successScore">@ViewBag.Result</p>
+                    </div>
+                    <div class="printscore"><a href="/studentresultpdf/@ViewBag.Group"><img src="~/images/printout.png" style="width:70px"/></a></div>
+                    <div class="printlabel">PRINT</div>
+                }
+                else
+                {
+                    <div class="row errormessage">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="error">
+                                !Error occured while fetching data from Data Base
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @{
+        Html.RenderPartial("~/Views/Common/_Footer.cshtml");
+    }
+}
+
+@section ScriptsSection
+{
+
+    <script src="~/scripts/jquery.min.js"></script>
+
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/owl.carousel.min.js"></script>
+    <script src="~/scripts/custom.js"></script>
+    <style>
+        #testResult{
+                margin-top: 50px;
+                margin-bottom: 40px;
+                text-align: center;
+        }
+        .successTest
+        {
+                margin-top: 20px;
+                font-size: 20px;
+        }
+        .successScore
+        {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+
+}

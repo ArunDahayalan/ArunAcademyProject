@@ -1,0 +1,71 @@
+﻿body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+    background-color: lightgray;
+    margin: 35px auto;
+    font-family: Raleway;
+    padding: 30px;
+    width: 80%;
+    min-width: 300px;
+}
+#TestHeading{
+    margin-top: 20px;
+    font-weight: 700;
+    font-family: initial;
+}
+.question-label{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.OptinalAnswers {
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.errormessage .error {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}
+
+#TestHeading h1, #TestHeading h5 {
+  text-align: center;  
+}
+
+#pagingbuttons{
+    text-align: center;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #4CAF50;
+}

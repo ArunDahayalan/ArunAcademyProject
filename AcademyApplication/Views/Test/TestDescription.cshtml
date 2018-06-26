@@ -1,0 +1,72 @@
+﻿
+
+@section TitleSection
+{
+    ATC Educational Institution || Test Description
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="~/Content/testdescription.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+@section MainSection
+{
+    @{
+        Html.RenderPartial("~/Views/Common/_Menu.cshtml");
+    }
+    <div  id="Description">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h1 class="skilltitle">
+                       Bank Skill Tests
+                    </h1>
+                    <div class="abouttest">
+                        Prove your skills and impress potential clients by taking a few free Upwork tests! The more relevant tests you pass, the more professional you look. Read the <a href="https://support.upwork.com/entries/23105466" target="_blank">test policies &amp; rules</a>
+                        before starting any tests.
+                    </div>
+                    @if (ViewBag.IsAlreadyTestDone)
+                    {
+                    <div class="teststart">
+                       <div class="studentTested">Already Test Taken Please Contact Admin</div>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="teststart">
+                            <a href="#" class="startbutton">START TEST</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <input class="groupid" value="@ViewBag.GroupId" style="display:none" />
+    @{
+        Html.RenderPartial("~/Views/Common/_Footer.cshtml");
+    }
+}
+
+@section ScriptsSection
+{
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/owl.carousel.min.js"></script>
+    <script src="~/scripts/custom.js"></script>
+    <script>
+        $(".startbutton").click(function()
+        {
+            if (getCookie("Atcstudentuser") != null) {
+                window.location = "/writetest/" + $(".groupid").val();
+            }
+            else {
+                window.location = "/studentlogin";
+            }
+        })
+    </script>
+}

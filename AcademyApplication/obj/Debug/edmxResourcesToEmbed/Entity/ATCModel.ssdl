@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATCACADEMYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contactus">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ContactEmail" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ContactPhone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ContactInformation" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="FacultyID" />
+    </Key>
+    <Property Name="FacultyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FacultyName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Options">
+    <Key>
+      <PropertyRef Name="OptionID" />
+    </Key>
+    <Property Name="OptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="OptionAnswer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+    <Property Name="IsHaveImage" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionGroup">
+    <Key>
+      <PropertyRef Name="QuestionGroupID" />
+    </Key>
+    <Property Name="QuestionGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionGroupName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Answer" Type="int" Nullable="false" />
+    <Property Name="QuestionGroupID" Type="int" Nullable="false" />
+    <Property Name="QuestionTypeID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+    <Property Name="IsHaveImage" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionType">
+    <Key>
+      <PropertyRef Name="QuestionTypeID" />
+    </Key>
+    <Property Name="QuestionTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ResultID" />
+    </Key>
+    <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="QuestionGroupID" Type="int" Nullable="false" />
+    <Property Name="Marks" Type="int" Nullable="false" />
+    <Property Name="wronganswers" Type="int" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="isAdmin" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Options__Questio__5AEE82B9">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+    <End Role="Options" Type="Self.Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Options">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Questions__Quest__5629CD9C">
+    <End Role="QuestionGroup" Type="Self.QuestionGroup" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroup">
+        <PropertyRef Name="QuestionGroupID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="QuestionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Questions__Quest__571DF1D5">
+    <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="1" />
+    <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionType">
+        <PropertyRef Name="QuestionTypeID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="QuestionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__Question__1FCDBCEB">
+    <End Role="QuestionGroup" Type="Self.QuestionGroup" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroup">
+        <PropertyRef Name="QuestionGroupID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="QuestionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__StudentI__1ED998B2">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ATCACADEMYModelStoreContainer">
+    <EntitySet Name="Contactus" EntityType="Self.Contactus" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="Options" EntityType="Self.Options" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="QuestionGroup" EntityType="Self.QuestionGroup" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="SIRCONTECHNOLOGIES_ATCACADEMY" store:Type="Tables" />
+    <AssociationSet Name="FK__Options__Questio__5AEE82B9" Association="Self.FK__Options__Questio__5AEE82B9">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Options" EntitySet="Options" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Questions__Quest__5629CD9C" Association="Self.FK__Questions__Quest__5629CD9C">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Questions__Quest__571DF1D5" Association="Self.FK__Questions__Quest__571DF1D5">
+      <End Role="QuestionType" EntitySet="QuestionType" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__Question__1FCDBCEB" Association="Self.FK__Result__Question__1FCDBCEB">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__StudentI__1ED998B2" Association="Self.FK__Result__StudentI__1ED998B2">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

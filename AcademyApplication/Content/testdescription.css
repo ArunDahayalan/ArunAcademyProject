@@ -1,0 +1,32 @@
+﻿#Description{
+    text-align:center;
+}
+.skilltitle{
+    padding-bottom:20px;
+    padding-top:20px;
+}
+
+.abouttest{
+    line-height:30px;
+    font-size:20px;
+    padding-bottom:30px;
+}
+.teststart .startbutton {
+    color: #fff;
+    background-color: #37a000;
+    border-color: transparent;
+    padding: 10px;
+    cursor:pointer;
+}
+#testgroup h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.errormessage .error {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}

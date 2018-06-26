@@ -1,0 +1,139 @@
+﻿
+
+
+
+@section TitleSection
+{
+     ATC Educational Institution || About US
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/aboutus.css" rel="stylesheet" />
+}
+@section MainSection
+{
+    @{
+        Html.RenderPartial("~/Views/Common/_Menu.cshtml");
+    }
+    <div id="about-us" class="segment">
+        <div class="container">
+            <div class="row">
+                <div class="about-us-info text-center">
+                    <p class="our-vision-content">
+                        "Our mission is to help our customers deliver awesome software quickly."
+                    </p>
+                    <hr>
+                    <h2>Our History</h2>
+                    <p class="about-us-content">
+                        Founded in 2001 and headquartered in Research Triangle Park, N.C., has more than 13,000 customers and more than 1 million users, including large financial institutions, Fortune 500 companies, and global IT consultancies.
+                    </p>
+                    <p class="about-us-content">
+
+                        Today we provide 800+ controls and frameworks for web, mobile, and desktop development. We provide ready-to-deploy enterprise software for dashboards, reports, data integration, and big data processing. Many customers have saved millions in licensing fees by deploying our software.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="management" class="segment management">
+        <section class="text-center management">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="text-center bold">Management Team</h2>
+                        <p class="text-center medium">
+                        </p>
+                    </div>
+                    @*<div class="col-lg-12 col-md-12 col-sm-12">*@
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="0" src="./images/img_avatar2.png" alt="STEFAN HOEIGN">
+                                <h5 class="open-management-modal" data-trigger-id="0">STEFAN HOENIG</h5>
+                                <span>President &amp; CEO</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="1" src="./images/img_avatar2.png" alt="DANIEL JEBARAJ">
+                                <h5 class="open-management-modal" data-trigger-id="1">DANIEL JEBARAJ</h5>
+                                <span>Vice President</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="2" src="./images/img_avatar2.png" alt="CLAYBURCH">
+                                <h5 class="open-management-modal" data-trigger-id="2">CLAY BURCH</h5>
+                                <span>Director of Technical Support</span>
+                            </div>
+                        </div>
+                    @*</div>*@
+                    @*<div class="col-lg-12 col-md-12 col-sm-12">*@
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="3" src="./images/img_avatar2.png" alt="DAVIS JEBARAJ">
+                                <h5 class="open-management-modal" data-trigger-id="3">DAVIS JEBARAJ</h5>
+
+                                <span>Director of Development</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="4" src="./images/img_avatar2.png" alt="CHRISTIANGROSSMANN">
+                                <h5 class="open-management-modal" data-trigger-id="4">CHRISTIAN GROSSMANN</h5>
+
+                                <span>Director of Sales</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="5" src="./images/img_avatar2.png" alt="JACLYN VIDUSIC">
+                                <h5 class="open-management-modal" data-trigger-id="5">JACLYN VIDUSIC<span id="information-tooltip"></span></h5>
+
+                                <span>General Counsel</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="6" src="./images/img_avatar2.png" alt="BRAD FREEMAN">
+                                <h5 class="open-management-modal" data-trigger-id="6">BRAD FREEMAN</h5>
+                                <span>Director of Sales</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4  col-md-4 col-lg-4">
+                            <div class="feature feature-8 modal-instance">
+                                <img class="open-management-modal" data-trigger-id="7" src="./images/img_avatar2.png" alt="SALLY BLOOM">
+                                <h5 class="open-management-modal" data-trigger-id="7">SALLY BLOOM</h5>
+                                <span>Director of Finance</span>
+                            </div>
+                        </div>
+                    </div>
+                @*</div>*@
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+    </div>
+    
+    @{
+        Html.RenderPartial("~/Views/Common/_Footer.cshtml");
+    }
+}
+
+@section ScriptsSection
+{
+
+    <script src="~/scripts/jquery.min.js"></script>
+
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/owl.carousel.min.js"></script>
+    <script src="~/scripts/custom.js"></script>
+
+
+}

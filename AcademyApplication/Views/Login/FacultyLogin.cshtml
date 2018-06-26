@@ -1,0 +1,40 @@
+﻿@section TitleSection
+{
+    ATC Educational Institution || Faculty Login
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+@section MainSection
+{
+    <div id="" class="">
+
+    <form class="modal-content">
+        <div class="imgcontainer">
+
+            <img src="images/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <input id="Email" type="text" placeholder="Enter Username" name="uname" required>
+            <input id="Password" type="password" placeholder="Enter Password" name="psw" required>
+
+            <div id="logincheck" onclick="loginTest()">Login</div>
+            <input id="Remember" type="checkbox"> Remember me
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+}
+}
+@section ScriptsSection
+{
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+}

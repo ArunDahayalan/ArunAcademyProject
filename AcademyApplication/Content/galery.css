@@ -1,0 +1,25 @@
+﻿.row {
+        margin-right: 0;
+        margin-left: 0;
+}
+#fh5co-main
+{
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.item {
+    padding-bottom: 50px;
+}
+
+.Navigation {
+    text-align :center;
+}
+    
+.Navigation li {
+    list-style-type:none;
+    padding-bottom: 20px;
+}
+.Photos, .Videos, .Audios{
+    cursor:pointer;
+}

@@ -1,0 +1,115 @@
+﻿ .footer-parallax
+  {
+      position: relative;
+  }
+ #about-us{
+    padding-top: 120px;
+    /*margin-bottom: 50px;*/
+ }
+ #contact-form{
+    border-right: 1px solid #999;
+    padding-right: 25px;
+ }
+.label {
+    color:#8c8c8c;
+    padding:initial;
+}
+
+#about-us .about-us-info .our-vision-content {
+    font-size: 26px;
+    font-weight: bold;
+    color: #4a4a4c;
+    font-style: italic;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 50px;
+}
+
+#about-us .about-us-info hr {
+    width: 10%;
+    height: 3px;
+    background-color: #35bc6c;
+    margin-top: 40px;
+}
+
+#about-us .about-us-info h2 {
+    margin-top: 50px;
+    font-size: 44px;
+    color: #333;
+}
+
+/*#about-us .about-us-info .about-us-content {
+    font-size: 18px;
+    color: #79797f;
+    max-width: 1000px;
+    margin: 40px auto;
+    line-height: 30px;
+    }
+*/
+
+.text-center {
+    text-align: center;
+}
+section {
+    padding-top: 6em;
+    padding-bottom: 5em;
+    background-color: #f4f4f4;
+}
+
+.management .feature img {
+    border-radius: 50%;
+    border: 1px solid #dbdbdb;
+    cursor: pointer;
+}
+.management .feature span {
+    font-size: 14px;
+    color: #7c7c7c;
+}
+#awards-customer .awards h3 {
+    font-size: 44px!important;
+    color: #1e1e1e;
+    font-weight: 300;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.feature-8 {
+    padding: 2.78571429em 0 3.71428571em 0;
+}
+#awards #awards-customer {
+    background-color: #fff;
+    padding-top: 90px;
+}
+.feature-8 img {
+    max-height: 14.85714286em;
+}
+img {
+    max-width: 100%;
+    margin-bottom: 1.85714286em;
+}
+
+.management .feature h5 {
+    font-size: 19px;
+    color: #0072c6;
+    cursor: pointer;
+    font-weight: 400;
+}
+.regular {
+    font-size: 18px;
+}
+#awards{
+    text-align: center;
+}
+
+.about-us-content
+{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+#awards-customer .awards p {
+    margin-left: 120px;
+    margin-right: 120px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    line-height: 30px;
+}  
