@@ -1,0 +1,131 @@
+﻿
+@section TitleSection
+{
+    ATC Educational Institution || QuestionGroupCreation
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+       
+        .m-t-20 {
+            margin-top: 20px;
+        }
+        .container {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .Required-field {
+            color: red !important
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 0 !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+        }
+
+        .errorMessage {
+            color: red;
+        }
+
+        .successMesage {
+            color: blue;
+        }
+    </style>
+}
+
+@section MainSection
+{
+    @{
+        Html.RenderPartial("~/Views/Common/_Menu.cshtml");
+    }
+    <section class="container">
+        <div class="row form-group">
+            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <label id="message"></label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-lg-4 col-md-4 col-sm-4"> <label>Question Group<span class="Required-field">*</span></label></div>
+            <div class="col-lg-8 col-md-8 col-sm-8"> @Html.TextBox("questionGroup", null, new { @id = "questionGroup", @class = "form-control", @required = "required" })</div>
+        </div>
+        <div class="row m-t-20">
+            <div class="col-lg-4 col-md-4 col-sm-4"> </div>
+            <div class="col-lg-8 col-md-8 col-sm-8"><input type="button" id="addQuestionGroup" class="btn btn-primary" value="Add Question Group" /></div>
+        </div>
+    </section>
+    @{
+        Html.RenderPartial("~/Views/Common/_Footer.cshtml");
+    }
+}
+@section ScriptsSection
+{
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#addQuestionGroup").on('click', function () {
+            
+                var questionGroup = $("#questionGroup").val();
+             
+                if (!questionGroup) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please Enter Question Group");
+                    $("#questionGroup").focus();
+                }
+                else {
+                   
+                    $.ajax({
+                        url: '@System.Web.Configuration.WebConfigurationManager.AppSettings["BaseURL"]' + "Course/QuestionGroupSubmit",
+                        type: "post",
+                        data: { questionGroup: questionGroup },
+                        datatype: 'json',
+                        contenttype: false,
+                        processdata: false,
+                        success: function (data) {
+                            if (data > 0) {
+                                $('#message').text("Question Group added successfully");
+                                $('#message').removeClass('errorMessage');
+                                $('#message').addClass('successMesage');
+                                $('#message').focus();
+                                $("#questionGroup").val('');
+                               
+                            }
+                            else {
+
+                                    $('#message').text("Something went wrong");
+                                    $('#message').removeClass('errorMessage');
+                                    $('#message').addClass('successMesage');
+                            }
+                        }
+                    });
+                }
+                });
+
+    });
+    </script>
+
+}

@@ -1,0 +1,441 @@
+﻿
+@section TitleSection
+{
+    ATC Educational Institution || QuestionsCreation
+}
+@section StyleSection
+{
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        .m-t-20 {
+            margin-top: 20px;
+        }
+
+        .container {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .Required-field {
+            color: red !important
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 0 !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+        }
+
+        #uploadQuestion, #uploadOption1, #uploadOption2, #uploadOption3, #uploadOption4 {
+            display: none;
+        }
+
+        .errorMessage {
+            color: red;
+        }
+
+        .successMesage {
+            color: blue;
+        }
+
+        .uploadControl {
+            margin-top: 10px;
+        }
+    </style>
+}
+
+@section MainSection
+{
+    @{
+        Html.RenderPartial("~/Views/Common/_Menu.cshtml");
+    }
+    <form id="QuestionForm" method='post' enctype='multipart/form-data'>
+        <section class="container">
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <label id="message"></label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Question Group<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @if (ViewBag.QuestionGroup != null)
+                    {
+                        @Html.DropDownList("QuestionGroup", null, "--Choose Question Group--", new { @class = "form-control", @required = "required" })
+                    }
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Question Type<span class="Required-field">*</span></label></div>
+
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @if (ViewBag.QuestionType != null)
+                    {
+                        @Html.DropDownList("QuestionType", null, "--Choose Question Type--", new { @class = "form-control", @required = "required" })
+                    }
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Enter Question<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @Html.TextBox("question", null, new { @id = "question", @class = "form-control", @required = "required" })
+                    @Html.CheckBox("isQuestionHasImage", false, new { @class = "isHaveImage" })
+                    <span>isHaveImage</span>
+                    <div>
+                        @Html.TextBox("uploadQuestion", null, new
+                        {
+                            @Class = "uploadControl",
+                            @placeholder = "",
+                            @id = "uploadQuestion",
+                            @Value = "",
+                            @type = "file",
+                            Accept = "image/*",
+                        })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Enter Option1<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @Html.TextBox("option1", null, new { @id = "option1", @class = "form-control", @required = "required" })
+                    @Html.CheckBox("isOption1HasImage", false, new { @class = "isHaveImage" })
+                    <span>isHaveImage</span>
+                    <div>
+                        @Html.TextBox("uploadOption1", null, new
+                        {
+                            @Class = "uploadControl",
+                            @placeholder = "",
+                            @id = "uploadOption1",
+                            @Value = "",
+                            @type = "file",
+                            Accept = "image/*",
+
+                        })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Enter Option2<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @Html.TextBox("option2", null, new { @id = "option2", @class = "form-control", @required = "required" })
+                    @Html.CheckBox("isOption2HasImage", false, new { @class = "isHaveImage" }) <span>isHaveImage</span>
+                    <div>
+                        @Html.TextBox("uploadOption2", null, new
+                        {
+                            @Class = "uploadControl",
+                            @placeholder = "",
+                            @id = "uploadOption2",
+                            @Value = "",
+                            @type = "file",
+                            Accept = "image/*",
+                        })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Enter Option3<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @Html.TextBox("option3", null, new { @id = "option3", @class = "form-control", @required = "required" })
+                    @Html.CheckBox("isOption3HasImage", false, new { @class = "isHaveImage" }) <span>isHaveImage</span>
+                    <div>
+                        @Html.TextBox("uploadOption3", null, new
+                        {
+                            @Class = "uploadControl",
+                            @placeholder = "",
+                            @id = "uploadOption3",
+                            @Value = "",
+                            @type = "file",
+                            Accept = "image/*",
+                        })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Enter Option4<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @Html.TextBox("option4", null, new { @id = "option4", @class = "form-control", @required = "required" })
+                    @Html.CheckBox("isOption4HasImage", false, new { @class = "isHaveImage" }) <span>isHaveImage</span>
+                    <div>
+                        @Html.TextBox("uploadOption4", null, new
+                        {
+                            @Class = "uploadControl",
+                            @placeholder = "",
+                            @id = "uploadOption4",
+                            @Value = "",
+                            @type = "file",
+                            Accept = "image/*",
+                        })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-4 col-md-4 col-sm-4"> <label>Choose Correct Answer<span class="Required-field">*</span></label></div>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    @Html.RadioButton("answer", "1") <span>1</span>
+                    @Html.RadioButton("answer", "2") <span>2</span>
+                    @Html.RadioButton("answer", "3") <span>3</span>
+                    @Html.RadioButton("answer", "4") <span>4</span>
+                </div>
+            </div>
+
+
+            <div class="row form-group m-t-20">
+                <div class="col-lg-4 col-md-4 col-sm-4"> </div>
+                <div class="col-lg-8 col-md-8 col-sm-8"><input type="button" id="addQuestions" class="btn btn-primary" value="Add Question" /></div>
+            </div>
+        </section>
+    </form>
+    @{
+        Html.RenderPartial("~/Views/Common/_Footer.cshtml");
+    }
+}
+@section ScriptsSection
+{
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var questionGroupId = "";
+            $("#QuestionGroup").change(function () {
+                questionGroupId = $("#QuestionGroup option:selected").val();
+
+            });
+            var questionTypeId = "";
+            $("#QuestionType").change(function () {
+                questionTypeId = $("#QuestionType option:selected").val();
+
+            });
+            var isQuestionHasImage = false;
+            var isOption1HasImage = false;
+            var isOption2HasImage = false;
+            var isOption3HasImage = false;
+            var isOption4HasImage = false;
+            $("input[class='isHaveImage']").change(function () {
+                isQuestionHasImage = $("input[name='isQuestionHasImage']:checked").val();
+                isOption1HasImage = $("input[name='isOption1HasImage']:checked").val();
+                isOption2HasImage = $("input[name='isOption2HasImage']:checked").val();
+                isOption3HasImage = $("input[name='isOption3HasImage']:checked").val();
+                isOption4HasImage = $("input[name='isOption4HasImage']:checked").val();
+
+                if (!isQuestionHasImage) {
+                    $('#uploadQuestion').val("");
+                    $('#uploadQuestion').css('display', 'none');
+                }
+                        else
+                        $('#uploadQuestion').css('display', 'block');
+
+                if (!isOption1HasImage) {
+                    $('#uploadOption1').val("");
+                    $('#uploadOption1').css('display', 'none');
+                }
+                        else
+                        $('#uploadOption1').css('display', 'block');
+                if (!isOption2HasImage) {
+                    $('#uploadOption2').val("");
+                    $('#uploadOption2').css('display', 'none');
+                }
+                    else
+                        $('#uploadOption2').css('display', 'block');
+
+                if (!isOption3HasImage) {
+                    $('#uploadOption3').val("");
+                    $('#uploadOption3').css('display', 'none');
+                }
+                else
+                        $('#uploadOption3').css('display', 'block');
+
+                if (!isOption4HasImage) {
+                    $('#uploadOption4').val("");
+                    $('#uploadOption4').css('display', 'none');
+                }
+                else
+                    $('#uploadOption4').css('display', 'block');
+
+            });
+
+
+            $("#addQuestions").on('click', function () {
+                var answerValue = $("input[name='answer']:checked").val();
+                var uploadQuestion = $('#uploadQuestion');
+
+                var questionImage, option1Image , option2Image , option3Image , option4Image;
+                if (uploadQuestion) {
+                    if (uploadQuestion[0].files[0])
+                        uploadQuestion = uploadQuestion[0].files[0];
+                }
+                var uploadOption1 = $('#uploadOption1');
+                if (uploadOption1) {
+                    if (uploadOption1[0].files[0])
+                        uploadOption1 = uploadOption1[0].files[0];
+                }
+                var uploadOption2 = $('#uploadOption2');
+                if (uploadOption2) {
+                    if (uploadOption2[0].files[0])
+                        uploadOption2 = uploadOption2[0].files[0];
+                }
+                var uploadOption3 = $('#uploadOption3');
+                if (uploadOption3) {
+                    if (uploadOption3[0].files[0])
+                        uploadOption3= uploadOption3[0].files[0];
+                }
+                var uploadOption4 = $('#uploadOption4');
+                if (uploadOption4) {
+                    if (uploadOption4[0].files[0])
+                         uploadOption4 = uploadOption4[0].files[0];
+                }
+
+                var question = $("#question").val();
+                var option1 = $("#option1").val();
+                var option2 = $("#option2").val();
+                var option3 = $("#option3").val();
+                var option4 = $("#option4").val();
+                if (questionGroupId == "") {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please choose Question Group");
+                    $("#QuestionGroup").focus();
+                }
+                else if (questionTypeId == "") {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text('Please choose Question Type');
+                    $("#QuestionType").focus();
+                }
+                else
+                if (!question) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please enter Question");
+                    $("#question").focus();
+                }
+                else if (!option1) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please enter Option1");
+                    $("#option1").focus();
+                }
+                else if (!option2) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please enter Option2");
+                    $("#option2").focus();
+                }
+
+                else if (!option3) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please enter Option3");
+                    $("#option3").focus();
+                }
+
+                else if (!option4) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please enter Option4");
+                    $("#option4").focus();
+                }
+
+                else if (!answerValue) {
+                    $('#message').addClass('errorMessage');
+                    $('#message').removeClass('successMessage');
+                    $('#message').text("Please choose correct answer");
+                    $("input[name = 'answer']").focus();
+                }
+
+
+                else {
+                    if (window.FormData !== undefined) {
+                        var formData = new FormData();
+                        formData.append('questionGroup', questionGroupId);
+                        formData.append('questionType', questionTypeId);
+                        formData.append('question', question);
+                        formData.append('uploadQuestion', uploadQuestion);
+                        formData.append('option1', option1);
+                        formData.append('uploadOption1', uploadOption1);
+                        formData.append('option2', option2);
+                        formData.append('uploadOption2', uploadOption2);
+                        formData.append('option3', option3);
+                        formData.append('uploadOption3', uploadOption3);
+                        formData.append('option4', option4);
+                        formData.append('uploadOption4', uploadOption4);
+                        formData.append('correctAnswer', answerValue);
+                      
+                // Make your AJAX call
+                        $.ajax({
+                            url: '@System.Web.Configuration.WebConfigurationManager.AppSettings["BaseURL"]' + "Course/QuestionsSubmit",
+                            //url: '@Url.Action("QuestionsSubmit", "Course")',
+                            data: formData,
+                            dataType: 'json',
+                            processData: false,
+                            contentType: false,
+                            async: false,
+                            type:'POST',
+                            success: function (data) {
+                                if (data > 0) {
+                                    $('#message').text("Question added successfully");
+                                    $('#message').removeClass('errorMessage');
+                                    $('#message').addClass('successMesage');
+                                    $('#message').focus();
+                                    $("#QuestionGroup").val('');
+                                    $("#QuestionType").val('');
+                                    $("#question").val('');
+                                    $("#option1").val('');
+                                    $("#option2").val('');
+                                    $("#option3").val('');
+                                    $("#option4").val('');
+                                    $("input[name = 'answer']").prop('checked', false);
+                                    $("input.isHaveImage").prop('checked', false);
+                                    $("#uploadQuestion").val('');
+                                    $("#uploadOption1").val('');
+                                    $("#uploadOption2").val('');
+                                    $("#uploadOption3").val('');
+                                    $("#uploadOption4").val('');
+                                    $('#uploadQuestion').css('display', 'none');
+                                    $('#uploadOption1').css('display', 'none');
+                                    $('#uploadOption2').css('display', 'none');
+                                    $('#uploadOption3').css('display', 'none');
+                                    $('#uploadOption4').css('display', 'none');
+                                }
+                                else {
+
+                                    $('#message').text("Something went wrong");
+                                    $('#message').removeClass('errorMessage');
+                                    $('#message').addClass('successMesage');
+                                }
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                console.log(xhr.status);
+                                console.log(xhr.responseText);
+                                console.log(thrownError);
+                            }
+                        });
+                    }
+                }
+                });
+
+    });
+    </script>
+
+}
